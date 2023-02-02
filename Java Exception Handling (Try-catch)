@@ -1,0 +1,25 @@
+https://www.hackerrank.com/challenges/java-exception-handling-try-catch/problem?isFullScreen=true
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner= new Scanner(System.in);
+        
+        try{
+            
+            int x= scanner.nextInt();
+            int y= scanner.nextInt();
+            int result= x/y;
+            System.out.println(result);
+        
+        }catch(ArithmeticException arithmeticException){
+            System.out.println("java.lang.ArithmeticException: / by zero");
+        }catch(InputMismatchException iMismatchException){
+            System.out.println("java.util.InputMismatchException");
+        }
+    }
+}
