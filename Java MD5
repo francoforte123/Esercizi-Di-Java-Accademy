@@ -1,0 +1,25 @@
+https://www.hackerrank.com/challenges/java-md5/problem?isFullScreen=true
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        String input = scanner.nextLine();
+        MessageDigest messageDigest = null;
+        try {
+            messageDigest = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("MD5 algorithm is not available: " + e);
+        }
+        messageDigest.update(input.getBytes(), 0, input.length());
+        System.out.println(new BigInteger(1, messageDigest.digest()).toString(16));
+    }
+}
