@@ -10,16 +10,21 @@ import java.security.NoSuchAlgorithmException;
 public class Solution {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
+        String str = scan.next();
+        MessageDigest md= null;
         
-        String input = scanner.nextLine();
-        MessageDigest messageDigest = null;
-        try {
-            messageDigest = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            System.err.println("MD5 algorithm is not available: " + e);
+        try{
+           md = MessageDigest.getInstance("MD5"); 
+        }catch(NoSuchAlgorithmException exception){
+            System.out.println(exception.getMessage());
         }
-        messageDigest.update(input.getBytes(), 0, input.length());
-        System.out.println(new BigInteger(1, messageDigest.digest()).toString(16));
+        
+        md.update(str.getBytes());
+        byte[] digest = md.digest();
+        
+        for (byte b : digest) {
+            System.out.format("%02x", b);
+        }
     }
 }
