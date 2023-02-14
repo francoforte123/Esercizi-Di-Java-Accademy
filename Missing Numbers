@@ -3,7 +3,6 @@
 https://github.com/francoforte123/Esercizi-Di-Java-Fatti/tree/main
 
 
-
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -22,15 +21,12 @@ class Result {
 
     public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
         List<Integer> listInteger= new ArrayList<>();
+        HashSet<Integer> hashSet= new HashSet<>();
         
-        for (int i = 0; i < brr.size(); i++) {
-            if(brr.contains(arr.get(i))){
-                brr.remove(i);
-            }
-            listInteger.addAll(brr);
-            
-        }
-        return listInteger;
+        listInteger.add(arr);
+        listInteger.add(brr);
+        hashSet.add(listInteger);
+        return hashSet;
     }
 }
 
@@ -64,3 +60,4 @@ public class Solution {
         bufferedWriter.close();
     }
 }
+
